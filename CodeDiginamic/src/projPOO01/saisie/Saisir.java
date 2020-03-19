@@ -27,11 +27,23 @@ import projPOO01.Menu.Menus;
  * @author antoinethebault Saisir : gere la saisie d'un patron, d'un client,
  *         d'un salarie, d'un fournisseur d'une commande ou d'un achat
  */
+/**
+ * @author antoinethebault
+ *Saisir
+ */
+/**
+ * @author antoinethebault
+ *Saisir
+ */
+/**
+ * @author antoinethebault Saisir
+ */
 public class Saisir {
 	public static Patron patron = new Patron();
 	public static ArrayList<Personne> listclient = new ArrayList<Personne>();
 	public static ArrayList<Personne> listsalarie = new ArrayList<Personne>();
 	public static ArrayList<Personne> listfournisseur = new ArrayList<Personne>();
+	public static ArrayList<Personne> listPersonne = new ArrayList<Personne>();
 
 	public static void SaisirAll() {
 
@@ -397,6 +409,39 @@ public class Saisir {
 	}
 
 	/**
+	 * saisirPersonne : permet la saisie d'une personne
+	 */
+	public static void saisirPersonne() {
+
+		ISaisirPersonne s = () -> {
+			String nom, prenom, adresse, ville, codepostal = "";
+			boolean erreurcp;
+			System.out.println("Saisir le nom de la personne");
+			nom = Menus.sc.next();
+			System.out.println("Saisir le prenom de la personne");
+			prenom = Menus.sc.next();
+			System.out.println("Saisir l'adresse de la personne");
+			adresse = Menus.sc.next();
+			System.out.println("Saisir la ville de la personne");
+			ville = Menus.sc.next();
+			erreurcp = true;
+			while (erreurcp) {
+				try {
+					System.out.println("Saisir le codepostal de la personne");
+					codepostal = Menus.sc.next();
+					Salarie.CtrlCodePostal(codepostal);
+					erreurcp = false;
+				} catch (ExceptionSaisieCodePostal e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			listPersonne.add(new Personne(nom, prenom, adresse, ville, codepostal));
+		};
+		s.saisirPersonne();
+		Menus.Menu();
+	}
+
+	/**
 	 * Methode permettant de remplir un tableau d'achat
 	 * 
 	 * @return ArrayList<Achat>
@@ -436,7 +481,7 @@ public class Saisir {
 				date = Menus.sc.next();
 				try {
 					d = Controles.CtrlDate(date);
-					
+
 					erreurdate = false;
 				} catch (ExceptionDate e) {
 					// TODO Auto-generated catch block

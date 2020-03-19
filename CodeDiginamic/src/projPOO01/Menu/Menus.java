@@ -69,7 +69,8 @@ public class Menus {
 		im1.put("4 pour saisir les fournisseur",Saisir::SaisirFournisseur);
 		im1.put("5 pour saisir le patron",Saisir::SaisirPatron);
 		im1.put("6 pour saisir un interimaire",Saisir::SaisirInterimaire);
-		im1.put("7 pour retourner au menu",Menus::Menu);
+		im1.put("7 pour saisir une personne", Saisir::saisirPersonne);
+		im1.put("8 pour retourner au menu",Menus::Menu);
 		im1.keySet().stream().sorted().forEach(System.out::println);
 		
 		while(true) {

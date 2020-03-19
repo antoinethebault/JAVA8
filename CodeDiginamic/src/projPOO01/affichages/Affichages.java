@@ -60,12 +60,13 @@ public class Affichages {
 		list.addAll(Saisir.listsalarie);
 		list.addAll(Saisir.listclient);
 		list.addAll(Saisir.listfournisseur);
+		list.addAll(Saisir.listPersonne);
 		list.add(Saisir.patron);
 		IAfficherPersonnes a = (s) -> System.out.println("Nom="+s.getNom()+" Prenom="+s.getPrenom()+" Adresse="+s.getAdresse()+" Ville="+s.getVille()+" Code Postal="+s.getCodepostal());
 		for (Personne personne : list) {
 			a.afficherPersonnes(personne);
 		}
-		return;
+		Menus.Menu();
 	}
 
 
